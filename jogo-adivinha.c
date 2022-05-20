@@ -5,8 +5,8 @@
 
 int main(void)
 {
-	setlocale(LC_ALL, "Portuguese");
-	
+	setlocale(LC_ALL, "Portuguese"); 
+	int validacao = 0; // variável para validar se o usuário acertou no limite das 10 tentativas, pois estava dando erro
 	int nums, numd, nivel, tent; //nums --> numero sorteado numd --> número digitado
 	char nome[300], sn; //sn --> sim ou não
 	
@@ -16,13 +16,14 @@ int main(void)
 	
 	printf("\nOlá, seja bem-vindo ao jogo do adivinha. Esperamos que se divirta!!");
 	printf("\n\nPra começar, digite seu primeiro nome:\n");
-	scanf("[\n]", nome);
+	scanf("%s", nome);
+	__fpurge(stdin);
 	printf("\n\nMuito bem %s, agora vamos para as regras...", nome);
 	printf("\n1 --> O objetivo do jogo é descobrir o número que estou pensando.");
 	printf("\n2 --> Existem 3 níveis: [1] de 0 a 10 [2] de 0 a 100 [3] de 0 a 1000!!");
 	printf("\n3 --> Você tem um total de 10 tentativas.");
 	printf("\nBom, chega de conversar e vamos lá!");
-	do //caso escolha jogar denovo pra n�o ter que colocar novamente o nome e ler tudo denovo 
+	do //caso escolha jogar denovo pra não ter que colocar novamente o nome e ler tudo denovo 
 	{ 
 		printf("\n\nEscolha um nível: [1] [2] [3]\n");
 		scanf("%d", &nivel);
@@ -51,8 +52,11 @@ int main(void)
 					}
 					else
 					{
+						printf("\n==========================");
 						printf("\n======   PARABÉNS   ======");
+						printf("\n==========================");
 						printf("\nO número que pensei é: %d", nums);
+						validacao = 1;
 					}
 				}
 			
@@ -85,8 +89,11 @@ int main(void)
 						}
 						else
 						{
+							printf("\n==========================");
 							printf("\n======   PARABÉNS   ======");
+							printf("\n==========================");
 							printf("\nO número que pensei é: %d", nums);
+							validacao = 1;
 						}
 					
 					}
@@ -124,6 +131,7 @@ int main(void)
 								printf("\n======   PARABÉNS   ======");
 								printf("\n==========================");
 								printf("\nO número que pensei é: %d", nums);
+								validacao = 1;
 							}
 						}
 					
@@ -133,7 +141,7 @@ int main(void)
 			}
 		}
 	
-		if(tent > 10)
+		if((tent > 10) && (validacao == 0))
 		{
 			printf("\n\nVocê ultrapassou o limite de tentativas!!\n");
 		}
@@ -149,7 +157,7 @@ int main(void)
 		
 	} while((sn == 's') || (sn == 'S'));
 	
-	printf("Pressione qualquer tecla para continuar...");
-	scanf("");
+	getchar();
+
 	return 0;
 }
