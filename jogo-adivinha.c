@@ -1,3 +1,9 @@
+/*
+	@author: Pedro Dicati
+	@date: 23/05/2020
+	@name: Jogo do Adivinha
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -15,17 +21,18 @@ int main(void)
 	printf("=================================================================\n");
 	
 	printf("\nOlá, seja bem-vindo ao jogo do adivinha. Esperamos que se divirta!!");
-	printf("\n\nPra começar, digite seu primeiro nome:\n");
-	scanf("%s", nome);
-	__fpurge(stdin);
+	printf("\n\nPra começar, digite seu nome:\n");
+	scanf("%[^\n]", nome);
+	setbuf(stdin, NULL);
 	printf("\n\nMuito bem %s, agora vamos para as regras...", nome);
-	printf("\n1 --> O objetivo do jogo é descobrir o número que estou pensando.");
+	printf("\n\n1 --> O objetivo do jogo é descobrir o número que estou pensando.");
 	printf("\n2 --> Existem 3 níveis: [1] de 0 a 10 [2] de 0 a 100 [3] de 0 a 1000!!");
 	printf("\n3 --> Você tem um total de 10 tentativas.");
-	printf("\nBom, chega de conversar e vamos lá!");
+	printf("\n\nBom, chega de conversar e vamos lá!");
+
 	do //caso escolha jogar denovo pra não ter que colocar novamente o nome e ler tudo denovo 
 	{ 
-		printf("\n\nEscolha um nível: [1] [2] [3]\n");
+		printf("\n\nEscolha um nível: [1] [2] [3]\n\n");
 		scanf("%d", &nivel);
 	
 		if(nivel == 1)
